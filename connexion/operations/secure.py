@@ -84,7 +84,7 @@ class SecureOperation(object):
             scheme_name, scopes = next(iter(security_req.items()))
             security_scheme = self.security_schemes[scheme_name]
 
-            if security_scheme['type'] == 'oauth2':
+            if security_scheme['type'] == 'oauth2' or security_scheme['type'] == 'openIdConnect':
                 required_scopes = scopes
                 token_info_func = self._api.security_handler_factory.get_tokeninfo_func(security_scheme)
                 scope_validate_func = self._api.security_handler_factory.get_scope_validate_func(security_scheme)
